@@ -1,0 +1,13 @@
+Api call is successful but static, will need to allow for dynamic API calls based on location or search
+
+No styling on the hikes page, will need to add this in
+
+Will need a show page for an individual hike
+
+Wil need some way to group hikes based on location , allow for location search?
+
+What other features?
+
+Will need to add in react router for a show route
+
+
