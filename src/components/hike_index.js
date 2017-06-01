@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import { geolocated } from 'react-geolocated';
+import _ from 'lodash';
 
 // actions import
 import { fetchHikes } from '../actions/index';
@@ -18,7 +19,7 @@ class HikeIndex extends Component {
 
 	renderHikeList(){
 		const { hikes } = this.props;
-		return hikes.map((hike) => {
+		return _.map(hikes, (hike) => {
 			return(
 				<HikeListItem 
 					hike={hike}
@@ -31,22 +32,22 @@ class HikeIndex extends Component {
 	render(){
 		if(!this.props.isGeolocationAvailable && !this.props.isGeolocationEnabled){
   		return(
-  			<div>
+  			<div className="index align-middle">
   				<div>Geolocation not available</div>
 					<div>Search Bar --- Hooked up to action for doing hike by city search</div>
   			</div>
   		);
   	} else {
-			if(this.props.hikes.constructor !== Array && this.props.coords){
+			if(Object.keys(this.props.hikes).length < 1 && this.props.coords){
 				this.geoHikeSearch();
 				return(
-					<div>
-						Loading your hikes
+					<div className="index">
+						<p className="text-xs-center align-middle">Loading your hikes</p>
 					</div>
 				);
-			} else if (this.props.hikes.constructor === Array){
+			} else if (Object.keys(this.props.hikes).length >= 1){
 				return(
-					<div className="container"> 
+					<div className="container index"> 
 						<div className="row">
 							{this.renderHikeList()}
 						</div>
@@ -54,8 +55,8 @@ class HikeIndex extends Component {
 	  		);	
 			} else {
 				return(
-					<div>
-						Loading your hikes
+					<div className="index">
+						<p className="text-xs-center align-middle">Loading your hikes</p>
 					</div>
 				);
 			}

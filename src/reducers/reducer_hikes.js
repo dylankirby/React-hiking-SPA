@@ -1,9 +1,10 @@
 import { FETCH_HIKES } from '../actions/index';
+import _ from 'lodash';
 
 export default function(state = {}, action) {
 	switch(action.type) {
 		case FETCH_HIKES:
-			return action.payload.data.places;
+			return _.mapKeys(action.payload.data.places, 'unique_id');
 		default:
 			return state;
 	}

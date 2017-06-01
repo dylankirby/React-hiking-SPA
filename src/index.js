@@ -5,8 +5,9 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import HikeIndex from './components/hike_index';
 import Landing from './components/landing';
+import HikeIndex from './components/hike_index';
+import HikeShow from './components/hike_show';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
@@ -16,6 +17,7 @@ ReactDOM.render(
 		<BrowserRouter>
 			<div>
 				<Switch>
+					<Route path="/hikes/:id" component={HikeShow}/>
 					<Route path="/hikes" component={HikeIndex}/>
 					<Route path="/" component={Landing}/>
 				</Switch>
