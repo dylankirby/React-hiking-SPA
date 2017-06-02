@@ -7,25 +7,21 @@ class ShowHike extends Component {
 	render(){
 		const { id } = this.props.match.params;
 		const { hikes } = this.props;
-
+		
+		// isolate hike user wants to see
 		const hike = hikes[id];
-		console.log(hike);
-		// const { hike } = this.props;
 		return(
 			<div>
-				<h1 className="text-xs-center">
-					{hike.name}
-				</h1>
+				<h1 className="text-xs-center">{hike.name}</h1>
+				<h4 className="text-xs-center">{hike.city}, {hike.state}</h4>
 				<p className="text-xs-center">{hike.description}</p>
-				<Link to="/hikes" className="pull-right btn btn-primary">Back to Hikes</Link>
+
+				<Link to="/hikes" className="pull-center btn btn-primary">Back to Hikes</Link>
+				<p className=""><strong>Directions:</strong> {hike.directions}</p>
 			</div>
 		);
 	}
 }
-
-// function mapStateToProps({ hikes }, ownProps){
-// 	return { hike: hikes[ownProps.match.params.id]};
-// }
 
 function mapStateToProps(state){
 	return { hikes: state.hikes};

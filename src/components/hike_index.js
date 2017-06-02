@@ -19,6 +19,7 @@ class HikeIndex extends Component {
 
 	renderHikeList(){
 		const { hikes } = this.props;
+		console.log(hikes);
 		return _.map(hikes, (hike) => {
 			return(
 				<HikeListItem 
