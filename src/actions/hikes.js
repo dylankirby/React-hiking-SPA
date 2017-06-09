@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const FETCH_HIKES = "FETCH_HIKES";
+export const FETCH_IMAGE = "FETCH_IMAGE";
 
 const ROOT_URL = "https://trailapi-trailapi.p.mashape.com/";
 const ACTIVITY = "q[activities_activity_type_name_eq]=hiking";
@@ -14,6 +15,15 @@ export function fetchHikes(lng, lat) {
 	
 	return {
 		type: FETCH_HIKES,
+		payload: request
+	}
+}
+
+export function fetchImage(){
+	const requre = axios.get();
+
+	return {
+		type: FETCH_IMAGE,
 		payload: request
 	}
 }

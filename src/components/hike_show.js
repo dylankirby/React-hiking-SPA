@@ -3,21 +3,39 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
+
+
 class ShowHike extends Component {
 	render(){
 		const { id } = this.props.match.params;
 		const { hikes } = this.props;
 		
-		// isolate hike user wants to see
+		// isolate hike user wants to see without modification to state
 		const hike = hikes[id];
 		return(
 			<div>
-				<h1 className="text-xs-center">{hike.name}</h1>
-				<h4 className="text-xs-center">{hike.city}, {hike.state}</h4>
-				<p className="text-xs-center">{hike.description}</p>
+				<div className="title">
+					<h1 className="text-xs-center">{hike.name}</h1>
+					<h4 className="text-xs-center title">{hike.city}, {hike.state}</h4>
+				</div>
+				<div className="jumbotron container-fluid"></div>
+				<div className="row">
+					<div className="container">
+						<div className="col-lg-8 col-md-12, col-sm-12 col-xs-12">
+							<p className="">{hike.description}</p>
+						</div>
 
-				<Link to="/hikes" className="pull-center btn btn-primary">Back to Hikes</Link>
+						<div className="col-lg-4 col-md-6, col-sm-12 col-xs-12">
+							<ul>
+								<li>Time</li>
+								<li>Distance</li>
+								<li>Difficulty</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 				<p className=""><strong>Directions:</strong> {hike.directions}</p>
+				<Link to="/hikes" className="pull-xs-right btn btn-primary">Back to Hikes</Link>
 			</div>
 		);
 	}

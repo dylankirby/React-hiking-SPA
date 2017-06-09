@@ -1,10 +1,22 @@
-i .fa-spin {
-	font-size: 24px;
+/*landing btn start*/
+#index-btn {
+	color: black;
+	border: 3px solid black;
 }
 
+#index-btn:hover{
+	background-color: black;
+	color: white;
+	-webkit-transition: background-color 150ms linear;
+  -ms-transition: background-color 150ms linear;
+  transition: background-color 150ms linear;
+}
+/*landing btn end*/
+
+/*landing jumbotron*/
 .jumbotron {
 	padding: 0;
-	height: 80vh;
+	height: 100vh;
 	max-width: 100%;
 	max-height: 100%;
 	background-image: url("../../assets/images/morning-hike.jpg");
@@ -12,16 +24,34 @@ i .fa-spin {
 	background-position: center center;
 }
 
-.navbar {
-	height: 10vh;
+/*loading spinner start*/
+.loading {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 6em;
+    height: 6em;
+    animation: spin 2s linear infinite;
+		margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/*loading spinner end*/
+
+.bordered {
+	border: 1px solid black;
+	margin: 2px 2px;
+	padding: 2px 2px;
 }
 
 .index {
-	transition: ;
-	-webkit-webkit-transition: ;
-	-moz-webkit-transition: ;
-	-ms-webkit-transition: ;
-	-o-webkit-transition: ;
-	webkit-transition: ;
-	margin-top: 40px;
+	margin-top: 5vh;
+}
+
+.title {
+	background-color: #f2f3f4;
+	margin: 0 0;
 }

@@ -1,4 +1,4 @@
-import { FETCH_HIKES } from '../actions/index';
+import { FETCH_HIKES } from '../actions/hikes';
 import _ from 'lodash';
 
 export default function(state = {}, action) {

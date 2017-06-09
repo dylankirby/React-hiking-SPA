@@ -4,19 +4,15 @@ import { Link } from 'react-router-dom'
 class Landing extends Component {
 	render(){
 		return (
-			<div className="">
-				<nav className="navbar navbar-default">
- 					<div className="container-fluid">
-    				<div className="navbar-header">
-      				<a className="navbar-brand" href="#">
-        				<img alt="Brand" src="..." />
-      				</a>
-    				</div>
-  				</div>
-				</nav>
-				<div className="jumbotron container-fluid"></div>
-				<div>Landing Page</div>
-				<Link to='/hikes' className="btn btn-primary">See our hikes</Link>
+			<div>
+				<div className="jumbotron container-fluid">
+					<div className="container">
+						<div className="Headline">
+							<h3>Good for the mind and the body</h3>
+							<Link id="index-btn" to='/hikes' className="btn btn-lg btn-default">Get out and Hike</Link>
+						</div>
+					</div>
+				</div>				
 			</div>
 		);
 	}

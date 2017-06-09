@@ -1,13 +1,33 @@
-Api call is successful but static, will need to allow for dynamic API calls based on location or search
+General
+=========
+-Build Navbar and Include
 
-No styling on the hikes page, will need to add this in
+Hikes
+=========
+Add in logic incase of no geolocation, allows search bar for location
+Will need some way to group hikes based on location , allow for location search?
+Fix show mapstatetoprops to only pull specific hike
 
-Will need a show page for an individual hike
+Profiles
+=========
+Will need login page, signup page, profile show page
+Redux action/reducer logic for the login info
+Redux logic for storing the token form JSON Token Auth
 
-Wil need some way to group hikes based on location , allow for location search?
-
-What other features?
-
-Will need to add in react router for a show route
-
-
+Styling
+===========
+Landing V2
+Hikes Index
+ -Loader -- Vertically Center
+ -Fade in after Loader
+ -Styling on list
+ 	-border
+ 	-center text in border
+ -Include Nav
+Hike Show
+	-Info bar
+	-Dynamic Jumbotron
+	-Better Titling
+	- Organize via rows/cols
+Profile Show
+Transitions

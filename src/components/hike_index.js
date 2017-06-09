@@ -5,7 +5,7 @@ import { geolocated } from 'react-geolocated';
 import _ from 'lodash';
 
 // actions import
-import { fetchHikes } from '../actions/index';
+import { fetchHikes } from '../actions/hikes';
 
 // component import
 import HikeListItem from './hike_list_item';
@@ -42,13 +42,15 @@ class HikeIndex extends Component {
 			if(Object.keys(this.props.hikes).length < 1 && this.props.coords){
 				this.geoHikeSearch();
 				return(
-					<div className="index">
+					<div className="loader">
 						<p className="text-xs-center align-middle">Loading your hikes</p>
+						<div className="loading"></div>
 					</div>
 				);
 			} else if (Object.keys(this.props.hikes).length >= 1){
 				return(
 					<div className="container index"> 
+						<h1>Hikes near you</h1>
 						<div className="row">
 							{this.renderHikeList()}
 						</div>
@@ -56,8 +58,9 @@ class HikeIndex extends Component {
 	  		);	
 			} else {
 				return(
-					<div className="index">
-						<p className="text-xs-center align-middle">Loading your hikes</p>
+					<div className="loader">
+						<p className="text-xs-center">Loading your hikes</p>
+						<div className="loading"></div>
 					</div>
 				);
 			}
