@@ -5,7 +5,7 @@ class Landing extends Component {
 	render(){
 		return (
 			<div>
-				<div className="jumbotron container-fluid">
+				<div className="jumbotron landing-jumbo container-fluid">
 					<div className="container">
 						<div className="Headline">
 							<h3>Good for the mind and the body</h3>

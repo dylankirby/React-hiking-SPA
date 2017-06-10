@@ -18,23 +18,33 @@ class ShowHike extends Component {
 					<h1 className="text-xs-center">{hike.name}</h1>
 					<h4 className="text-xs-center title">{hike.city}, {hike.state}</h4>
 				</div>
-				<div className="jumbotron container-fluid"></div>
+				<div className="row hike-main">
+					<div className="col-lg-8 col-md-12, col-sm-12 col-xs-12">
+						<div className="jumbotron show-jumbo container-fluid"></div>
+					</div>
+					<div className="col-lg-4 col-md-6, col-sm-12 col-xs-12">
+							<ul>
+								<li>Time</li>
+								<li>Distance</li>
+								<li>Difficulty</li>
+								<li>Start Elevation</li>
+								<li>End Elevation</li>
+								<li>Camping Available?</li>
+								<li>Region</li>
+							</ul>
+						</div>
+				</div>
+				
 				<div className="row">
 					<div className="container">
 						<div className="col-lg-8 col-md-12, col-sm-12 col-xs-12">
 							<p className="">{hike.description}</p>
 						</div>
-
-						<div className="col-lg-4 col-md-6, col-sm-12 col-xs-12">
-							<ul>
-								<li>Time</li>
-								<li>Distance</li>
-								<li>Difficulty</li>
-							</ul>
-						</div>
 					</div>
 				</div>
-				<p className=""><strong>Directions:</strong> {hike.directions}</p>
+				<div className="container">
+					<p className=""><strong><u>How to get there</u></strong> <br/> {hike.directions}</p>
+				</div>
 				<Link to="/hikes" className="pull-xs-right btn btn-primary">Back to Hikes</Link>
 			</div>
 		);
