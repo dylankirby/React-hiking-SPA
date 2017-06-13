@@ -16,7 +16,7 @@ Redux logic for storing the token form JSON Token Auth
 
 Styling
 ===========
-Landing V2
+Landing
 Hikes Index
  -Loader -- Vertically Center
  -Fade in after Loader
@@ -25,9 +25,10 @@ Hikes Index
  	-center text in border
  -Include Nav
 Hike Show
-	-Info bar
 	-Dynamic Jumbotron
 	-Better Titling
-	- Organize via rows/cols
+	-Same height on details and image
 Profile Show
+	-build first
 Transitions
+	-transitions from one page to the next need to be smoother

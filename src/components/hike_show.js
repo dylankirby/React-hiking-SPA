@@ -22,7 +22,7 @@ class ShowHike extends Component {
 					<div className="col-lg-8 col-md-12, col-sm-12 col-xs-12">
 						<div className="jumbotron show-jumbo container-fluid"></div>
 					</div>
-					<div className="col-lg-4 col-md-6, col-sm-12 col-xs-12">
+					<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 							<ul>
 								<li>Time</li>
 								<li>Distance</li>

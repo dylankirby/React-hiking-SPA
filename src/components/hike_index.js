@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import { geolocated } from 'react-geolocated';
+import { CSSTransitionGroup } from 'react-transition-group';
 import _ from 'lodash';
 
 // actions import
@@ -16,10 +17,10 @@ class HikeIndex extends Component {
 		const {longitude, latitude} = this.props.coords;
 		this.props.fetchHikes(longitude, latitude);
 	};
-
+	
+	// renders instances of hikeListItem for all hikes returned
 	renderHikeList(){
 		const { hikes } = this.props;
-		console.log(hikes);
 		return _.map(hikes, (hike) => {
 			return(
 				<HikeListItem 
@@ -31,6 +32,7 @@ class HikeIndex extends Component {
 	}
 
 	render(){
+		// if no geolocation avail, display searchbar
 		if(!this.props.isGeolocationAvailable && !this.props.isGeolocationEnabled){
   		return(
   			<div className="index align-middle">
@@ -38,18 +40,29 @@ class HikeIndex extends Component {
 					<div>Search Bar --- Hooked up to action for doing hike by city search</div>
   			</div>
   		);
-  	} else {
+  	}
+  	// if coordinates returned from geo and hikes array is empty run search, loading spinner
+  	else {
 			if(Object.keys(this.props.hikes).length < 1 && this.props.coords){
 				this.geoHikeSearch();
 				return(
-					<div className="loader">
-						<p className="text-xs-center align-middle">Loading your hikes</p>
-						<div className="loading"></div>
+					<div className="loader index">
+						<CSSTransitionGroup
+		          transitionName="index"
+				      transitionAppear={true}
+				      transitionAppearTimeout={500}
+				      transitionEnter={false}
+				      transitionLeave={false}>
+		          <p className="text-xs-center">Loading Hikes Near You</p>
+							<div className="loading"></div>
+		        </CSSTransitionGroup>
 					</div>
 				);
-			} else if (Object.keys(this.props.hikes).length >= 1){
+			} 
+			// if hikes api call has returned, render list
+			else if (Object.keys(this.props.hikes).length >= 1){
 				return(
-					<div className="container index"> 
+					<div className="container"> 
 						<h1>Hikes near you</h1>
 						<div className="row">
 							{this.renderHikeList()}
@@ -58,9 +71,16 @@ class HikeIndex extends Component {
 	  		);	
 			} else {
 				return(
-					<div className="loader">
-						<p className="text-xs-center">Loading your hikes</p>
-						<div className="loading"></div>
+					<div className="loader index">
+						<CSSTransitionGroup
+		          transitionName="index"
+				      transitionAppear={true}
+				      transitionAppearTimeout={500}
+				      transitionEnter={false}
+				      transitionLeave={false}>
+		          <p className="text-xs-center">Loading Hikes Near You</p>
+							<div className="loading"></div>
+		        </CSSTransitionGroup>
 					</div>
 				);
 			}
