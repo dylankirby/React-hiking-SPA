@@ -90,7 +90,7 @@ li {
 	margin-top: 10px;
 }
 
-/*hike show appear styling start*/
+/*component appear styling*/
 .index-appear {
   opacity: 0.01;
 }
@@ -98,4 +98,12 @@ li {
 .index-appear.index-appear-active {
   opacity: 1;
   transition: opacity .4s ease-in;
+}
+
+/*background image for hike index list item*/
+.background-image {
+	background-image: url("../../assets/images/backpack-flat.jpg");
+	background-size: cover;
+	background-position: center center;
+	height: 50vh;
 }

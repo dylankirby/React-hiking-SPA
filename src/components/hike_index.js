@@ -67,11 +67,9 @@ class HikeIndex extends Component {
 			      transitionAppearTimeout={500}
 			      transitionEnter={false}
 			      transitionLeave={false}>
-						<div className="container"> 
+						<div className="container-fluid"> 
 							<h1 className="text-xs-center">Hikes near you</h1>
-							<ul className="list-group">
-								{this.renderHikeList()}
-							</ul>
+							{this.renderHikeList()}
 		  			</div>
 			    </CSSTransitionGroup>
 	  		);	

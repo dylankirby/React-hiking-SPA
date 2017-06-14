@@ -17,13 +17,12 @@ Redux logic for storing the token form JSON Token Auth
 Styling
 ===========
 Hikes Index
- -switch to list
- 	-clickable
- 	-nice styling
- 	highlighting
+	-styling on list items
+	-color or pic somewhere? looks bland
 Hike Show
 	-Dynamic Jumbotron
 	-Better Titling
 	-Same height on details and image
+	-fix spacing on far right of screen
 Profile Show
 	-build first
