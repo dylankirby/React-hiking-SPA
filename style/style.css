@@ -97,14 +97,5 @@ li {
 
 .index-appear.index-appear-active {
   opacity: 1;
-  transition: opacity .3s ease-in;
-}
-
-.list-enter{
-	opacity: 0.01
-}
-
-.list-enter.list-enter-active {
-  opacity: 1;
-  transition: opacity .3s ease-in;
+  transition: opacity .4s ease-in;
 }

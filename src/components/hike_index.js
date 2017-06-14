@@ -62,12 +62,19 @@ class HikeIndex extends Component {
 			// if hikes api call has returned, render list
 			else if (Object.keys(this.props.hikes).length >= 1){
 				return(
-					<div className="container"> 
-						<h1>Hikes near you</h1>
-						<div className="row">
-							{this.renderHikeList()}
-						</div>
-	  			</div>
+					<CSSTransitionGroup
+			      transitionName="index"
+			      transitionAppear={true}
+			      transitionAppearTimeout={500}
+			      transitionEnter={false}
+			      transitionLeave={false}>
+						<div className="container"> 
+							<h1>Hikes near you</h1>
+							<div className="row">
+								{this.renderHikeList()}
+							</div>
+		  			</div>
+			    </CSSTransitionGroup>
 	  		);	
 			} else {
 				return(
