@@ -6,7 +6,7 @@ Hikes
 =========
 Add in logic incase of no geolocation, allows search bar for location
 Will need some way to group hikes based on location , allow for location search?
-Fix show mapstatetoprops to only pull specific hike
+Show page -> Fix show mapstatetoprops to only pull specific hike
 
 Profiles
 =========
@@ -16,19 +16,14 @@ Redux logic for storing the token form JSON Token Auth
 
 Styling
 ===========
-Landing
 Hikes Index
- -Loader -- Vertically Center
- -Fade in after Loader
- -Styling on list
- 	-border
- 	-center text in border
- -Include Nav
+ -switch to list
+ 	-clickable
+ 	-nice styling
+ 	highlighting
 Hike Show
 	-Dynamic Jumbotron
 	-Better Titling
 	-Same height on details and image
 Profile Show
 	-build first
-Transitions
-	-transitions from one page to the next need to be smoother

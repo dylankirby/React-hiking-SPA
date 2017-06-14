@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import { geolocated } from 'react-geolocated';
 import { CSSTransitionGroup } from 'react-transition-group';
 import _ from 'lodash';
@@ -69,10 +68,10 @@ class HikeIndex extends Component {
 			      transitionEnter={false}
 			      transitionLeave={false}>
 						<div className="container"> 
-							<h1>Hikes near you</h1>
-							<div className="row">
+							<h1 className="text-xs-center">Hikes near you</h1>
+							<ul className="list-group">
 								{this.renderHikeList()}
-							</div>
+							</ul>
 		  			</div>
 			    </CSSTransitionGroup>
 	  		);	
