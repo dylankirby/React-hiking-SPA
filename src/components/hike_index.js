@@ -52,8 +52,8 @@ class HikeIndex extends Component {
 				      transitionAppearTimeout={500}
 				      transitionEnter={false}
 				      transitionLeave={false}>
-		          <p className="text-xs-center">Loading Hikes Near You</p>
-							<div className="loading"></div>
+			          <p className="text-xs-center">Loading Hikes Near You</p>
+								<div className="loading"></div>
 		        </CSSTransitionGroup>
 					</div>
 				);
@@ -67,10 +67,10 @@ class HikeIndex extends Component {
 			      transitionAppearTimeout={500}
 			      transitionEnter={false}
 			      transitionLeave={false}>
-						<div className="container-fluid"> 
-							<h1 className="text-xs-center">Hikes near you</h1>
-							{this.renderHikeList()}
-		  			</div>
+							<div className="container-fluid"> 
+								<h1 className="text-xs-center">Hikes near you</h1>
+								{this.renderHikeList()}
+			  			</div>
 			    </CSSTransitionGroup>
 	  		);	
 			} else {
@@ -82,8 +82,8 @@ class HikeIndex extends Component {
 				      transitionAppearTimeout={500}
 				      transitionEnter={false}
 				      transitionLeave={false}>
-		          <p className="text-xs-center">Loading Hikes Near You</p>
-							<div className="loading"></div>
+			          <p className="text-xs-center">Loading Hikes Near You</p>
+								<div className="loading"></div>
 		        </CSSTransitionGroup>
 					</div>
 				);

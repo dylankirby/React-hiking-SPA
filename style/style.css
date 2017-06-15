@@ -70,7 +70,7 @@
 .title {
 	background-color: #f6f6f6;
 	margin: 0 0;
-	padding-bottom: 10px;
+	padding: 10px 0; 
 }
 
 /*hike show details list start*/
@@ -79,7 +79,7 @@ ul {
   padding: 0;
 }
 
-li {
+.hike-info-item {
 	background-color: #f6f6f6;
   padding: 20px 15px 18px 60px;
   border: 1px solid #ebebeb;
@@ -87,7 +87,11 @@ li {
 
 /*hike show main window*/
 .hike-main {
-	margin-top: 10px;
+	margin: 10px 0px;
+}
+
+.row {
+	max-width: 100%;
 }
 
 /*component appear styling*/
@@ -97,13 +101,15 @@ li {
 
 .index-appear.index-appear-active {
   opacity: 1;
-  transition: opacity .4s ease-in;
+  transition: opacity .6s ease-in;
 }
 
-/*background image for hike index list item*/
-.background-image {
-	background-image: url("../../assets/images/backpack-flat.jpg");
-	background-size: cover;
-	background-position: center center;
-	height: 50vh;
+.img-thumbnail {
+	padding: 0;
+}
+
+.list-group-item {
+	max-width: 30%;
+	margin: 5px 1.66%;
+	display: inline-block;
 }
