@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 import _ from 'lodash';
 
-
-
 class ShowHike extends Component {
 	render(){
 		const { id } = this.props.match.params;
@@ -25,21 +23,23 @@ class ShowHike extends Component {
 							<h1 className="text-xs-center">{hike.name}</h1>
 							<h4 className="text-xs-center title">{hike.city}, {hike.state}</h4>
 						</div>
-						<div className="row hike-main">
+						<div className="row hike-main container-fluid">
 							<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-								<div className="jumbotron show-jumbo container-fluid"></div>
+								<img src="../../assets/images/morning-hike.jpg" alt="No Image" className="img-thumbnail"/>
 							</div>
 							<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 									<ul>
-										<li className="hike-info-item">Time: {hike.time ? hike.time : 'No Info Available'}</li>
-										<li className="hike-info-item">Distance: {hike.dist ? hike.dist : 'No Info Available'}</li>
-										<li className="hike-info-item">Difficulty: {hike.diff ? hike.diff : 'No Info Available'}</li>
-										<li className="hike-info-item">Start Elevation: {hike.startel ? hike.startel : 'No Info Available'}</li>
-										<li className="hike-info-item">End Elevation: {hike.endel ? hike.endel : 'No Info Available'}</li>
-										<li className="hike-info-item">Camping Available?: {hike.camp ? hike.camp : 'No Info Available'}</li>
-										<li className="hike-info-item">Region: {hike.region ? hike.region : 'No Info Available'}</li>
+										<li className="hike-info-item">Time:   {hike.time ? hike.time : 'No Info Available'}</li>
+										<li className="hike-info-item">Distance:   {hike.dist ? hike.dist : 'No Info Available'}</li>
+										<li className="hike-info-item">Difficulty:   {hike.diff ? hike.diff : 'No Info Available'}</li>
+										<li className="hike-info-item">Start Elevation:   {hike.startel ? hike.startel : 'No Info Available'}</li>
+										<li className="hike-info-item">End Elevation:   {hike.endel ? hike.endel : 'No Info Available'}</li>
+										<li className="hike-info-item">Camping Available?:   {hike.camp ? hike.camp : 'No Info Available'}</li>
+										<li className="hike-info-item">Region:   {hike.region ? hike.region : 'No Info Available'}</li>
+										<li className="hike-info-item">Dog Friendly:   {hike.dogfriend ? hike.dogfriend : 'No Info Available'}</li>
+										<li className="hike-info-item">Travel Time:   {hike.traveltime ? hike.traveltime : 'No Info Available'}</li>
 									</ul>
-								</div>
+							</div>
 						</div>
 						<div className="row">
 							<div className="container">

@@ -5,9 +5,11 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+// components import
 import Landing from './components/landing';
-import HikeIndex from './components/hike_index';
-import HikeShow from './components/hike_show';
+import HikeIndex from './components/hikes/hike_index';
+import HikeShow from './components/hikes/hike_show';
+
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);

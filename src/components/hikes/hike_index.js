@@ -5,7 +5,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import _ from 'lodash';
 
 // actions import
-import { fetchHikes } from '../actions/hikes';
+import { fetchHikes } from '../../actions/hikes';
 
 // component import
 import HikeListItem from './hike_list_item';
