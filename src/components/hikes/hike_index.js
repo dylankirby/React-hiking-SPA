@@ -24,7 +24,6 @@ class HikeIndex extends Component {
 			return(
 				<HikeListItem 
 					hike={hike}
-					location={this.props.coords}
 					key={hike.unique_id}
 				/>
 			)
@@ -95,7 +94,7 @@ class HikeIndex extends Component {
 
 
 function mapStateToProps(state){
-	return { hikes: state.hikes};
+	return { hikes: state.hikes };
 }
 
 export default geolocated({

@@ -9,22 +9,23 @@ class ShowHike extends Component {
   	return deg * (Math.PI/180)
 	};
 
-	getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-	  const R = 6371; // Radius of the earth in km
-	  const dLat = this.deg2rad(lat2-lat1);  // deg2rad below
-	  const dLon = this.deg2rad(lon2-lon1); 
-	  const a = 
-	    Math.sin(dLat/2) * Math.sin(dLat/2) +
-	    Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
-	    Math.sin(dLon/2) * Math.sin(dLon/2)
-	    ; 
-	  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	  const d = R * c; // Distance in km
-	  return Math.round(d);
+	getDistance(lat1,lon1,lat2,lon2) {
+		const R = 6371; // Radius of the earth in km
+		const dLat = deg2rad(lat2-lat1);  // deg2rad below
+		const dLon = deg2rad(lon2-lon1); 
+		const a = 
+		  Math.sin(dLat/2) * Math.sin(dLat/2) +
+		  Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+		  Math.sin(dLon/2) * Math.sin(dLon/2)
+		; 
+		const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+		const d = R * c; // Distance in km
+		return Math.round(d);
 	};
 
 	render(){
-		const { hike, longitude, latitude} = this.props.location.state;
+		console.log(this.props);
+		const { hike } = this.props;
 		return(
 				<CSSTransitionGroup
 	      transitionName="index"
@@ -41,7 +42,7 @@ class ShowHike extends Component {
 							<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 								<img src="../../assets/images/morning-hike.jpg" alt="No Image" className="img-thumbnail"/>
 							</div>
-							<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+							<div className="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 									<ul>
 										<li className="hike-info-item">Time:   {hike.time ? hike.time : 'No Info Available'}</li>
 										<li className="hike-info-item">Distance:   {hike.dist ? hike.dist : 'No Info Available'}</li>
@@ -51,7 +52,7 @@ class ShowHike extends Component {
 										<li className="hike-info-item">Camping Available?:   {hike.camp ? hike.camp : 'No Info Available'}</li>
 										<li className="hike-info-item">Region:   {hike.region ? hike.region : 'No Info Available'}</li>
 										<li className="hike-info-item">Dog Friendly:   {hike.dogfriend ? hike.dogfriend : 'No Info Available'}</li>
-										<li className="hike-info-item">Distance Away: {hike.lon && hike.lat ? `${this.getDistanceFromLatLonInKm(latitude, longitude, hike.lat, hike.lon)}km` : 'No Info Available'}</li>
+										<li className="hike-info-item">Distance Away: {hike.lon && hike.lat ? 'Hello' : 'No Info Available'}</li>
 									</ul>
 							</div>
 						</div>
@@ -78,4 +79,8 @@ class ShowHike extends Component {
 	}
 }
 
-export default ShowHike;
+function mapStateToProps(state, ownProps){
+	return {hike: state.hikes[ownProps.match.params.id]}
+}
+
+export default connect(mapStateToProps)(ShowHike);

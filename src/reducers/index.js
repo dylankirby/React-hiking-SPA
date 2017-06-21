@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import HikesReducer from './reducer_hikes';
 
 const rootReducer = combineReducers({
-  hikes: HikesReducer
+  hikes: HikesReducer,
 });	
 
 export default rootReducer;

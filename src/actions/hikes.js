@@ -17,3 +17,4 @@ export function fetchHikes(lng, lat) {
 		payload: request
 	}
 }
+
