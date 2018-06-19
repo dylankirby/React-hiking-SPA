@@ -1,7 +1,6 @@
 # get-out-and-hike
 
-SPA built using react/webpack leveraging a customer API. The app will eventually provide users with the ability to find hikes close to them.
-User will be able to favorite hikes, search for hikes by difficulty, location, and name
+SPA built using react/webpack leveraging third party API to return hikes close to a user using location data, where they can then select a hike to get more information.
 
-Curently gaining skills to full implement my vision for the app
+Limited information as is due to the third party API. Thus a custom API will be designed to provide more detailed information about the hikes.
 
