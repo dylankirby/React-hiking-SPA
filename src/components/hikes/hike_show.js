@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { geolocated } from 'react-geolocated';
 import { CSSTransitionGroup } from 'react-transition-group';
+import { distance } from '../../../middleware/geo_distance';
 import _ from 'lodash';
 
 class ShowHike extends Component {
 	render(){
 		const { id } = this.props.match.params;
-		const { hikes } = this.props;
+		const { hikes, coords } = this.props;
 		
 		// isolate hike user wants to see without modification to state
 		const hike = hikes[id];
+		
 		return(
 				<CSSTransitionGroup
 	      transitionName="index"
 	      transitionAppear={true}
-	      transitionAppearTimeout={500}
+	      transitionAppearTimeout={1000}
 	      transitionEnter={false}
 	      transitionLeave={false}>
 		      <div>
@@ -37,7 +40,7 @@ class ShowHike extends Component {
 										<li className="hike-info-item">Camping Available?:   {hike.camp ? hike.camp : 'No Info Available'}</li>
 										<li className="hike-info-item">Region:   {hike.region ? hike.region : 'No Info Available'}</li>
 										<li className="hike-info-item">Dog Friendly:   {hike.dogfriend ? hike.dogfriend : 'No Info Available'}</li>
-										<li className="hike-info-item">Travel Time:   {hike.traveltime ? hike.traveltime : 'No Info Available'}</li>
+										<li className="hike-info-item">Distance From You:   {coords ? distance(coords.longitude, coords.latitude, hike.lon, hike.lat) +' km' : 'No Info Available'}</li>
 									</ul>
 							</div>
 						</div>
@@ -66,4 +69,11 @@ function mapStateToProps(state){
 	return { hikes: state.hikes};
 }
 
-export default connect(mapStateToProps)(ShowHike);
+export default geolocated({
+  positionOptions: {
+    enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000
+})(
+	connect(mapStateToProps)(ShowHike)
+);

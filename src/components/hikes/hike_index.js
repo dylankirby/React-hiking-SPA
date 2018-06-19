@@ -25,6 +25,7 @@ class HikeIndex extends Component {
 				<HikeListItem 
 					hike={hike}
 					key={hike.unique_id}
+					location={this.props.coords}
 				/>
 			)
 		});
@@ -49,7 +50,7 @@ class HikeIndex extends Component {
 						<CSSTransitionGroup
 		          transitionName="index"
 				      transitionAppear={true}
-				      transitionAppearTimeout={500}
+				      transitionAppearTimeout={1000}
 				      transitionEnter={false}
 				      transitionLeave={false}>
 			          <p className="text-xs-center">Loading Hikes Near You</p>
@@ -64,11 +65,11 @@ class HikeIndex extends Component {
 					<CSSTransitionGroup
 			      transitionName="index"
 			      transitionAppear={true}
-			      transitionAppearTimeout={500}
+			      transitionAppearTimeout={1000}
 			      transitionEnter={false}
 			      transitionLeave={false}>
-							<div className="container-fluid"> 
-								<h1 className="text-xs-center">Hikes near you</h1>
+							<div className="container"> 
+								<h1 className="text-xs-center explore">Hikes near you</h1>
 								{this.renderHikeList()}
 			  			</div>
 			    </CSSTransitionGroup>
@@ -79,7 +80,7 @@ class HikeIndex extends Component {
 						<CSSTransitionGroup
 		          transitionName="index"
 				      transitionAppear={true}
-				      transitionAppearTimeout={500}
+				      transitionAppearTimeout={1000}
 				      transitionEnter={false}
 				      transitionLeave={false}>
 			          <p className="text-xs-center">Loading Hikes Near You</p>

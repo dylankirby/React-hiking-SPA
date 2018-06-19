@@ -48,6 +48,10 @@
 	padding: 2px 2px;
 }
 
+.explore {
+	margin: 2% 0;
+}
+
 /*top seperation for hike*/
 .index {
 	max-height: 20vh;
@@ -98,7 +102,7 @@ ul {
 }
 
 .list-group-item {
-	max-width: 30%;
+	max-width: 100%;
 	margin: 1% 1.66%;
 	display: inline-block;
 	box-shadow: 2px 2px 12px #B4B4B4;
