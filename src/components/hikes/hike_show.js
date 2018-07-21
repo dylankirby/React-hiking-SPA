@@ -7,21 +7,29 @@ import { distance } from '../../../middleware/geo_distance';
 import _ from 'lodash';
 
 import { fetchWeather } from '../../actions/weather';
+import { fetchImage } from '../../actions/image';
 
 class ShowHike extends Component {
 
 	render(){
 		const { id } = this.props.match.params;
 		const { hikes, coords, weather } = this.props; 
+		// isolate hike user wants to see without modification to state
+		const hike = hikes[id];
+		let image_url = ""
 		
-		console.log(this.props.weather);
+		if(_.isEmpty(this.props.image)){
+			this.props.fetchImage(hike.name);			
+		} else {
+			console.log(this.props.image);
+    	image_url = this.props.image.queryExpansions[0].thumbnail.thumbnailUrl;
+		}
+
 		if(_.isEmpty(this.props.weather) && this.props.coords) {
-			console.log("ping");
 			this.props.fetchWeather(coords.longitude, coords.latitude);
 		}
 		
-		// isolate hike user wants to see without modification to state
-		const hike = hikes[id];
+
 		
 		return(
 				<CSSTransitionGroup
@@ -37,7 +45,7 @@ class ShowHike extends Component {
 						</div>
 						<div className="row hike-main container-fluid">
 							<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-								<img src="../../assets/images/morning-hike.jpg" alt="No Image" className="img-thumbnail"/>
+								<img src={image_url} alt="No Image" className="img-thumbnail"/>
 							</div>
 							<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 									<ul>
@@ -63,7 +71,6 @@ class ShowHike extends Component {
 							<h6><strong><u>How to get there</u></strong> </h6>
 							<p>{hike.directions}</p>
 						</div>
-						<Link to="/hikes" className="pull-xs-right btn btn-primary">Back to Hikes</Link>
 					</div>
 	    </CSSTransitionGroup>
 		);
@@ -71,7 +78,7 @@ class ShowHike extends Component {
 }
 
 function mapStateToProps(state){
-	return { hikes: state.hikes, weather: state.weather};
+	return { hikes: state.hikes, weather: state.weather, image: state.image};
 }
 
 export default geolocated({
@@ -80,5 +87,5 @@ export default geolocated({
   },
   userDecisionTimeout: 5000
 })(
-	connect(mapStateToProps, { fetchWeather })(ShowHike)
+	connect(mapStateToProps, { fetchWeather, fetchImage })(ShowHike)
 );
