@@ -6,10 +6,19 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import { distance } from '../../../middleware/geo_distance';
 import _ from 'lodash';
 
+import { fetchWeather } from '../../actions/weather';
+
 class ShowHike extends Component {
+
 	render(){
 		const { id } = this.props.match.params;
-		const { hikes, coords } = this.props;
+		const { hikes, coords, weather } = this.props; 
+		
+		console.log(this.props.weather);
+		if(_.isEmpty(this.props.weather) && this.props.coords) {
+			console.log("ping");
+			this.props.fetchWeather(coords.longitude, coords.latitude);
+		}
 		
 		// isolate hike user wants to see without modification to state
 		const hike = hikes[id];
@@ -32,14 +41,10 @@ class ShowHike extends Component {
 							</div>
 							<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 									<ul>
-										<li className="hike-info-item">Time:   {hike.time ? hike.time : 'No Info Available'}</li>
-										<li className="hike-info-item">Distance:   {hike.dist ? hike.dist : 'No Info Available'}</li>
-										<li className="hike-info-item">Difficulty:   {hike.diff ? hike.diff : 'No Info Available'}</li>
-										<li className="hike-info-item">Start Elevation:   {hike.startel ? hike.startel : 'No Info Available'}</li>
-										<li className="hike-info-item">End Elevation:   {hike.endel ? hike.endel : 'No Info Available'}</li>
-										<li className="hike-info-item">Camping Available?:   {hike.camp ? hike.camp : 'No Info Available'}</li>
-										<li className="hike-info-item">Region:   {hike.region ? hike.region : 'No Info Available'}</li>
-										<li className="hike-info-item">Dog Friendly:   {hike.dogfriend ? hike.dogfriend : 'No Info Available'}</li>
+										<li className="hike-info-item">Current Temperature:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
+										<li className="hike-info-item">Daily High:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
+										<li className="hike-info-item">Daily Low: {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
+										<li className="hike-info-item">Current Weather   {weather.main ? weather.weather.main : 'No Info Available'}</li>
 										<li className="hike-info-item">Distance From You:   {coords ? distance(coords.longitude, coords.latitude, hike.lon, hike.lat) +' km' : 'No Info Available'}</li>
 									</ul>
 							</div>
@@ -66,7 +71,7 @@ class ShowHike extends Component {
 }
 
 function mapStateToProps(state){
-	return { hikes: state.hikes};
+	return { hikes: state.hikes, weather: state.weather};
 }
 
 export default geolocated({
@@ -75,5 +80,5 @@ export default geolocated({
   },
   userDecisionTimeout: 5000
 })(
-	connect(mapStateToProps)(ShowHike)
+	connect(mapStateToProps, { fetchWeather })(ShowHike)
 );
