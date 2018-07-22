@@ -29,7 +29,7 @@ class ShowHike extends Component {
 			this.props.fetchWeather(coords.longitude, coords.latitude);
 		}
 		
-
+		console.log(this.props.weather);
 		
 		return(
 				<CSSTransitionGroup
@@ -43,16 +43,16 @@ class ShowHike extends Component {
 							<h1 className="text-xs-center">{hike.name}</h1>
 							<h4 className="text-xs-center title">{hike.city}, {hike.state}</h4>
 						</div>
-						<div className="row hike-main container-fluid">
-							<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-								<img src={image_url} alt="No Image" className="img-thumbnail"/>
+						<div className="row hike-main container">
+							<div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+								<img src={image_url} alt="No Image" className="img-thumbnail img-responsive"/>
 							</div>
-							<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+							<div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<ul>
 										<li className="hike-info-item">Current Temperature:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
 										<li className="hike-info-item">Daily High:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
 										<li className="hike-info-item">Daily Low: {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
-										<li className="hike-info-item">Current Weather   {weather.main ? weather.weather.main : 'No Info Available'}</li>
+										<li className="hike-info-item">Current Weather: {weather.main ? weather.weather[0].main : 'No Info Available'}</li>
 										<li className="hike-info-item">Distance From You:   {coords ? distance(coords.longitude, coords.latitude, hike.lon, hike.lat) +' km' : 'No Info Available'}</li>
 									</ul>
 							</div>
@@ -67,6 +67,7 @@ class ShowHike extends Component {
 								</div>
 							</div>
 						</div>
+						<br/>
 						<div className="container">
 							<h6><strong><u>How to get there</u></strong> </h6>
 							<p>{hike.directions}</p>

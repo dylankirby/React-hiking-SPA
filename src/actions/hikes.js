@@ -12,7 +12,7 @@ const config = {
 };
 
 export function fetchHikes(lng, lat) {
-	const request = axios.get(`${ROOT_URL}?lat=${lat}&limit=6&lon=${lng}&${ACTIVITY}&radius=${RADIUS}`, config);
+	const request = axios.get(`${ROOT_URL}?lat=${lat}&limit=15&lon=${lng}&${ACTIVITY}&radius=${RADIUS}`, config);
 	
 	return {
 		type: FETCH_HIKES,
