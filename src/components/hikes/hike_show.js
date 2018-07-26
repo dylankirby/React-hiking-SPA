@@ -11,26 +11,21 @@ import { fetchImage } from '../../actions/image';
 
 class ShowHike extends Component {
 
+	componentDidMount(){
+		const { hike, coords } = this.props.location.state;
+		this.props.fetchImage(hike.name);
+		this.props.fetchWeather(coords.lon, coords.lat);
+	}
+
 	render(){
-		const { id } = this.props.match.params;
-		const { hikes, coords, weather } = this.props; 
-		// isolate hike user wants to see without modification to state
-		const hike = hikes[id];
-		let image_url = ""
-		
-		if(_.isEmpty(this.props.image)){
-			this.props.fetchImage(hike.name);			
-		} else {
-			console.log(this.props.image);
-    	image_url = this.props.image.queryExpansions[0].thumbnail.thumbnailUrl;
+		let imageUrl = "";
+		const { hike, coords } = this.props.location.state;
+		const { weather } = this.props;
+
+		if(!_.isEmpty(this.props.image)){
+    	imageUrl = this.props.image.value[0].contentUrl
 		}
 
-		if(_.isEmpty(this.props.weather) && this.props.coords) {
-			this.props.fetchWeather(coords.longitude, coords.latitude);
-		}
-		
-		console.log(this.props.weather);
-		
 		return(
 				<CSSTransitionGroup
 	      transitionName="index"
@@ -45,15 +40,15 @@ class ShowHike extends Component {
 						</div>
 						<div className="row hike-main container">
 							<div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-								<img src={image_url} alt="No Image" className="img-thumbnail img-responsive"/>
+								<img src={imageUrl} alt="No Image" className="img-thumbnail img-responsive"/>
 							</div>
-							<div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 									<ul>
 										<li className="hike-info-item">Current Temperature:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
 										<li className="hike-info-item">Daily High:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
 										<li className="hike-info-item">Daily Low: {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
 										<li className="hike-info-item">Current Weather: {weather.main ? weather.weather[0].main : 'No Info Available'}</li>
-										<li className="hike-info-item">Distance From You:   {coords ? distance(coords.longitude, coords.latitude, hike.lon, hike.lat) +' km' : 'No Info Available'}</li>
+										<li className="hike-info-item">Distance From You:   {coords ? distance(coords.lon, coords.lat, hike.lon, hike.lat) +' km' : 'No Info Available'}</li>
 									</ul>
 							</div>
 						</div>
@@ -79,14 +74,7 @@ class ShowHike extends Component {
 }
 
 function mapStateToProps(state){
-	return { hikes: state.hikes, weather: state.weather, image: state.image};
+	return { weather: state.weather, image: state.image};
 }
 
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: false,
-  },
-  userDecisionTimeout: 5000
-})(
-	connect(mapStateToProps, { fetchWeather, fetchImage })(ShowHike)
-);
+export default connect(mapStateToProps, { fetchWeather, fetchImage })(ShowHike);

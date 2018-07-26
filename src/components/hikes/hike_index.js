@@ -12,6 +12,7 @@ import HikeListItem from './hike_list_item';
 
 // define component
 class HikeIndex extends Component {
+
 	geoHikeSearch(){
 		const {longitude, latitude} = this.props.coords;
 		this.props.fetchHikes(longitude, latitude);
@@ -20,12 +21,14 @@ class HikeIndex extends Component {
 	// renders instances of hikeListItem for all hikes returned
 	renderHikeList(){
 		const { hikes } = this.props;
+		const {longitude, latitude} = this.props.coords;
 		return _.map(hikes, (hike) => {
 			return(
 				<HikeListItem 
 					hike={hike}
 					key={hike.unique_id}
-					location={this.props.coords}
+					lon={longitude}
+					lat={latitude}
 				/>
 			)
 		});
@@ -43,7 +46,7 @@ class HikeIndex extends Component {
   	}
   	// if coordinates returned from geo and hikes array is empty run search, loading spinner
   	else {
-			if(Object.keys(this.props.hikes).length < 1 && this.props.coords){
+			if(_.isEmpty(this.props.hikes) && this.props.coords){
 				this.geoHikeSearch();
 				return(
 					<div className="loader index">
@@ -60,7 +63,7 @@ class HikeIndex extends Component {
 				);
 			} 
 			// if hikes api call has returned, render list
-			else if (Object.keys(this.props.hikes).length >= 1){
+			else if (!_.isEmpty(this.props.hikes)){
 				return(
 					<CSSTransitionGroup
 			      transitionName="index"
@@ -95,7 +98,7 @@ class HikeIndex extends Component {
 
 
 function mapStateToProps(state){
-	return { hikes: state.hikes};
+	return { hikes: state.hikes };
 }
 
 export default geolocated({
