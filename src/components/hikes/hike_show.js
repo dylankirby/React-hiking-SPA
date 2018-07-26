@@ -38,34 +38,30 @@ class ShowHike extends Component {
 							<h1 className="text-xs-center">{hike.name}</h1>
 							<h4 className="text-xs-center title">{hike.city}, {hike.state}</h4>
 						</div>
-						<div className="row hike-main container">
-							<div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-								<img src={imageUrl} alt="No Image" className="img-thumbnail img-responsive"/>
+						<div className="container">
+							<div className="row hike-main">
+								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<img src={imageUrl} alt="No Image" className="img-thumbnail img-responsive"/>
+								</div>
 							</div>
-							<div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-									<ul>
-										<li className="hike-info-item">Current Temperature:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
-										<li className="hike-info-item">Daily High:   {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
-										<li className="hike-info-item">Daily Low: {weather.main ? `${Math.round(weather.main.temp - 273)}C` : 'No Info Available'}</li>
-										<li className="hike-info-item">Current Weather: {weather.main ? weather.weather[0].main : 'No Info Available'}</li>
-										<li className="hike-info-item">Distance From You:   {coords ? distance(coords.lon, coords.lat, hike.lon, hike.lat) +' km' : 'No Info Available'}</li>
-									</ul>
-							</div>
-						</div>
-						<div className="row">
-							<div className="container">
+							<div className="row">
 								<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 									<h6><u><strong>About this hike</strong></u></h6>
 									<p className="">
 										{hike.description ? hike.description : 'No information available'}
 									</p>
 								</div>
+								<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+									<h6><u><strong>Directions</strong></u></h6>
+									<p className="">
+										{hike.directions ? hike.directions : 'No information available'}
+									</p>
+								</div>
+								<div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+									<h6><u><strong>Current Weather: {weather.main ? `${Math.round(weather.main.temp - 273)} Degrees and ${weather.weather[0].main}` : 'No Info Available'}</strong></u></h6>
+									<h6><u><strong>Distance From You:   {coords ? distance(coords.lon, coords.lat, hike.lon, hike.lat) +' km' : 'No Info Available'}</strong></u></h6>
+								</div>
 							</div>
-						</div>
-						<br/>
-						<div className="container">
-							<h6><strong><u>How to get there</u></strong> </h6>
-							<p>{hike.directions}</p>
 						</div>
 					</div>
 	    </CSSTransitionGroup>

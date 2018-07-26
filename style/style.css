@@ -76,6 +76,12 @@ ul {
 	background-color: #f6f6f6;
   padding: 20px 15px 18px 60px;
   border: 1px solid #ebebeb;
+  height: 20%;
+}
+
+.info-list {
+	margin: 0;
+	height: 100%;
 }
 
 /*hike show main window*/
