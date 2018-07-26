@@ -1,4 +1,4 @@
-# get-out-and-hike
+# Get-Out-And-Hike
 
 SPA built using react/webpack leveraging third party API to return hikes close to a user using location data, where they can then select a hike to get more information.
 
