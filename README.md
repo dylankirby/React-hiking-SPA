@@ -6,3 +6,5 @@ Limited information as is due to the third party API. Thus a custom API will be 
 
 Bootstrapped from Stephen Grider's React-Redux Simple Starter
 
+Not an example of high quality code. Currently being redeveloped
+
